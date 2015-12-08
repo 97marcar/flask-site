@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>{% block title %}{% endblock %} - My FlaskSite</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="{{ url_for('static',filename='css/mystyle.css') }}" rel="stylesheet">
+</head>
+<header>
+{% include "header.html" %}
+</header>
+<body>
+	<div id="content">
+		{% block content %}{% endblock %}
+	</div>
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  
+	{% include "footer.html" %}
+</body>
+</html>
