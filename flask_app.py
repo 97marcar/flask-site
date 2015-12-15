@@ -1,7 +1,7 @@
 """Author: Marcus Carlsson, 2015"""
 
 #import flask
-from flask import Flask, render_template
+from flask import Flask, render_template, flash
 
 #create flask-app
 app = Flask(__name__)
@@ -10,6 +10,7 @@ app = Flask(__name__)
 @app.route('/startpage/')
 def startpage():
     """..."""
+    flash("Hello World")
     return render_template("startpage.html")
 
 if (__name__ == "__main__"):
