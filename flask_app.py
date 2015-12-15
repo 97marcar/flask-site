@@ -10,7 +10,7 @@ app = Flask(__name__)
 @app.route('/startpage/')
 def startpage():
     """..."""
-    flash("Hello World")
+    flash("This site uses cookies")
     return render_template("startpage.html")
 
 if (__name__ == "__main__"):
