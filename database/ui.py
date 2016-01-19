@@ -47,7 +47,7 @@ def ui():
         select_existing_products.select_product(selected_id)
         ui()
     else:
-        print("exit")
+        print("exit.")
 
 
 if __name__ == "__main__":
