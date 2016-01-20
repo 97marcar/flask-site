@@ -19,7 +19,7 @@ def ui():
     print("4. Delete existing product")
     print("5. Search Product")
     print("0. Exit")
-    
+
     choice = input("Choose option: ")
     if choice == "1" or choice == 1:
         create_product_table.create_table(create_product_table.db_name, "Product", create_product_table.sql)

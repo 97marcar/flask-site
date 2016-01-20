@@ -1,13 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import sqlite3
-db_name = "database.db"
 
-sql = """CREATE TABLE Product
-            (ProductID INTEGER,
-            Name TEXT,
-            Price REAL,
-            PRIMARY KEY(ProductID))"""
+
             
 def create_table(db_name, table_name, sql):
     with sqlite3.connect(db_name) as db:
@@ -30,6 +25,28 @@ def create_table(db_name, table_name, sql):
         if not keep_table:
             cursor.execute(sql)
             db.commit()
+            
+def create_product_table():
+    sql = """CREATE TABLE Product
+            (ProductID INTEGER,
+            Name TEXT,
+            Price REAL,
+            ProductTypeID INTEGER,
+            PRIMARY KEY(ProductID)
+            FOREIGN KEY(ProductTypeID) references ProductType(ProductTypeID))"""
+    create_table(db_name, "Product", sql)
+    
+    
+def create_product_type_table():
+    sql = """CREATE TABLE ProductType
+            (ProductTypeID INTEGER,
+            Name TEXT,
+            Price REAL,
+            PRIMARY KEY(ProductTypeID))"""
+    create_table(db_name, "ProductType", sql)
         
 if __name__ == "__main__":
-    create_table(db_name, "Product", sql)
+    db_name = "database.db"
+    create_product_table()
+    create_product_type_table()
+    
