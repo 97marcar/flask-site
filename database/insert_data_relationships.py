@@ -47,7 +47,7 @@ def insert_order_item_data(records):
 if __name__ == "__main__":
     product_types = [("Coffee",)]
     products = [("Latte", 1.35, 1)]
-    customer_data = [("Anton","Hallman","Den tredje lusvägen","Ottawa",9321,"0921853769122","gröntröja@bing.net")]
+    customer_data = [(1,"Anton","Hallman","Den tredje lusvägen","Ottawa",9321,"0921853769122","gröntröja@bing.net")]
     customer_order = [(1,1,"01-21-2016","10:52")]
     order_item = [(1,1,1,1)]
     #insert_product_type_data(product_types)
