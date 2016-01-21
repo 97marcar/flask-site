@@ -32,11 +32,17 @@ def insert_customer_data(records):
         print(record)
         query(sql,record)
 
-def insert_order_data(records):
+def insert_order_customer_data(records):
     sql = "INSERT INTO CustomerOrder(OrderID,CustomerID, Date, Time)VALUES (?,?)"
     for record in records:
         print(record)
         query(sql,record)
+
+def insert_order_item_data(records):
+    sql = "INSERT INTO OrderItem(OrderItemID, OrderID, ProductID, Quantity) VALUES (?,?,?,?)"
+    for record in records:
+        print(record)
+        query(sql, record)
 
 if __name__ == "__main__":
     product_types = [("Coffee",),("Tea",),("Soda",)]
