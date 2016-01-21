@@ -39,7 +39,7 @@ def create_customer_table():
             PRIMARY KEY(CustomerID))"""
     create_table(db_name, "Customer", sql)
 
-def customer_order_table():
+def customer_order_customer_table():
     sql = """CREATE TABLE CustomerOrder
             (OrderID INTEGER,
             Date TEXT,
@@ -49,7 +49,7 @@ def customer_order_table():
             FOREIGN KEY(CustomerID) references Customer(CustomerID)"""
     create_table(db_name, "CustomerOrder", sql)
 
-def customer_order_table():
+def customer_order_item_table():
     sql = """CREATE TABLE OrderItem
             (OrderItemID INTEGER,
             OrderID INTEGER,
