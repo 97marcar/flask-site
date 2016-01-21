@@ -3,7 +3,7 @@ import sqlite3
 def query(sql, data):
     with sqlite3.connect("database.db") as db:
         cursor = db.cursor()
-        #cursor.execute("PRAGMA FOREIGN_KEYS = ON")
+        cursor.execute("PRAGMA FOREIGN_KEYS = ON")
         cursor.execute(sql,data)
         db.commit()
 def update_producttype_id(new, old):
@@ -20,11 +20,11 @@ def update_customer_data(CustomerID,FirstName,LastName,Street,Town,PostCode,Tele
     query(sql,(Town,CustomerID))
     sql = ("UPDATE Customer SET PostCode=? WHERE CustomerID=?")
     query(sql,(PostCode,CustomerID))
-    sql = ("UPDATE Customer SET TelephoneNumber=? WHERE CustomerID=?)
+    sql = ("UPDATE Customer SET TelephoneNumber=? WHERE CustomerID=?")
     query(sql,(TelephoneNumber,CustomerID))
     sql = ("UPDATE Customer SET EMailAddress=? WHERE CustomerID=?")
-    query(sql,(EMailAddress,CustomerID)
+    query(sql,(EMailAddress,CustomerID))
 
 
-if __name__ == '__main__':
-    update_customer_data(1,"Antonio","Hallman","Den tredje lusvägen","Ottawa",9321,"0921853769122","gröntröja@bing.net")
+if __name__ == "__main__":
+    update_customer_data(1,"Antonio","Hallmano","Den tredje lusvägen1","Ottawaa",93213,"09218537691229","swag@bing.org")

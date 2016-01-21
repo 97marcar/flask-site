@@ -2,7 +2,7 @@
 
 import sqlite3
 
-
+db_name = "database.db"
 
 def create_table(db_name, table_name, sql):
     with sqlite3.connect(db_name) as db:
@@ -25,7 +25,7 @@ def create_table(db_name, table_name, sql):
         if not keep_table:
             cursor.execute(sql)
             db.commit()
-            
+
 def create_product_type_table():
     sql = """CREATE TABLE ProductType
             (ProductTypeID INTEGER,
@@ -42,9 +42,6 @@ def create_product_table():
             PRIMARY KEY(ProductID)
             FOREIGN KEY(ProductTypeID) references ProductType(ProductTypeID))"""
     create_table(db_name, "Product", sql)
-
-
-
 
 def create_customer_table():
     sql = """CREATE TABLE Customer
@@ -65,20 +62,21 @@ def customer_order_table():
             Date TEXT,
             Time TEXT,
             CustomerID INTEGER,
+            Quantity INTEGER,
             PRIMARY KEY(OrderID)
             FOREIGN KEY(CustomerID) references Customer(CustomerID))"""
     create_table(db_name, "CustomerOrder", sql)
 
-def customer_order_item_table():
-    sql = """CREATE TABLE OrderItem
-            (OrderItemID INTEGER,
-            OrderID INTEGER,
-            ProductID INTEGER,
-            Quantity INTEGER,
-            PRIMARY KEY(OrderItemID)
-            FOREIGN KEY(OrderID) references CustomerOrder(OrderID)
-            FOREIGN KEY(ProductID) references Product(ProductID))"""
-    create_table(db_name, "CustomerOrder", sql)
+#def customer_order_item_table(): # Can not figure out how to get this  into the UI
+#    sql = """CREATE TABLE OrderItem
+#            (OrderItemID INTEGER,
+#            OrderID INTEGER,
+#            ProductID INTEGER,
+#            Quantity INTEGER,
+#            PRIMARY KEY(OrderItemID)
+#            FOREIGN KEY(OrderID) references CustomerOrder(OrderID)
+#            FOREIGN KEY(ProductID) references Product(ProductID))"""
+#    create_table(db_name, "OrderItem", sql)
 
 
 
