@@ -3,11 +3,12 @@ import sqlite3
 def query(sql, data):
     with sqlite3.connect("database.db") as db:
         cursor = db.cursor()
-        cursor.execute("PRAGMA FOREIGN_KEYS = ON")
+        #cursor.execute("PRAGMA FOREIGN_KEYS = ON")
         cursor.execute(sql,data)
         db.commit()
+def update_producttype_id(new, old):
+    sql = "UPDATE ProductType SET ProductTypeID=? WHERE ProductTypeID=?"
+    query(sql,(new,old))
 
 if __name__ == '__main__':
-    sql = "UPDATE ProductType set ProductTypeID = 57 WHERE ProductTypeID = 1"
-    sql = "DELETE FROM ProductType WHERE ProductTypeID = 57"
-    query(sql,())
+    update_producttype_id(1,2)
