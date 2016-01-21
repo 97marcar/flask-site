@@ -25,6 +25,26 @@ def create_table(db_name, table_name, sql):
         if not keep_table:
             cursor.execute(sql)
             db.commit()
+            
+def create_product_type_table():
+    sql = """CREATE TABLE ProductType
+            (ProductTypeID INTEGER,
+            Description TEXT,
+            PRIMARY KEY(ProductTypeID))"""
+    create_table(db_name, "ProductType", sql)
+
+def create_product_table():
+    sql = """CREATE TABLE Product
+            (ProductID INTEGER,
+            Name TEXT,
+            Price REAL,
+            ProductTypeID INTEGER,
+            PRIMARY KEY(ProductID)
+            FOREIGN KEY(ProductTypeID) references ProductType(ProductTypeID))"""
+    create_table(db_name, "Product", sql)
+
+
+
 
 def create_customer_table():
     sql = """CREATE TABLE Customer
@@ -34,19 +54,19 @@ def create_customer_table():
             Street TEXT,
             Town TEXT,
             PostCode INTEGER,
-            TelephoneNumber INTEGER,
+            TelephoneNumber TEXT,
             EMailAddress TEXT,
             PRIMARY KEY(CustomerID))"""
     create_table(db_name, "Customer", sql)
 
-def customer_order_customer_table():
+def customer_order_table():
     sql = """CREATE TABLE CustomerOrder
             (OrderID INTEGER,
             Date TEXT,
             Time TEXT,
             CustomerID INTEGER,
             PRIMARY KEY(OrderID)
-            FOREIGN KEY(CustomerID) references Customer(CustomerID)"""
+            FOREIGN KEY(CustomerID) references Customer(CustomerID))"""
     create_table(db_name, "CustomerOrder", sql)
 
 def customer_order_item_table():
@@ -57,28 +77,15 @@ def customer_order_item_table():
             Quantity INTEGER,
             PRIMARY KEY(OrderItemID)
             FOREIGN KEY(OrderID) references CustomerOrder(OrderID)
-            FOREIGN KEY(ProductID) references Product(ProductID"""
+            FOREIGN KEY(ProductID) references Product(ProductID))"""
     create_table(db_name, "CustomerOrder", sql)
 
-def create_product_table():
-    sql = """CREATE TABLE Product
-            (ProductID INTEGER,
-            Name TEXT,
-            Price REAL,
-            ProductTypeID INTEGER,
-            PRIMARY KEY(ProductID)
-            FOREIGN KEY(ProductTypeID) references ProductType(ProductTypeID)"""
-    create_table(db_name, "Product", sql)
 
-
-def create_product_type_table():
-    sql = """CREATE TABLE ProductType
-            (ProductTypeID INTEGER,
-            Description TEXT,
-            PRIMARY KEY(ProductTypeID))"""
-    create_table(db_name, "ProductType", sql)
 
 if __name__ == "__main__":
     db_name = "database.db"
     create_product_table()
     create_product_type_table()
+    create_customer_table()
+    customer_order_table()
+    customer_order_item_table()
