@@ -21,7 +21,7 @@ def query(sql, data):
         db.commit()
 
 def insert_product_type_data(description):
-    sql = "INSERT INTO ProductType(Description) VALUES (?)"
+    sql = "INSERT INTO ProductType (Description) VALUES (?)"
     query(sql, description)
 
 def insert_product_data(records):
@@ -39,12 +39,13 @@ def insert_order_customer_data(records):
     sql = "INSERT INTO CustomerOrder(Date, Time, CustomerID, Quantity) VALUES (?,?,?,?)"
     query(sql,(records))
 
-#def insert_order_item_data(records):
+# def insert_order_item_data(records):
 #    sql = "INSERT INTO OrderItem(OrderID,ProductID,Quantity) VALUES (?,?,?)"
 #    for record in records:
 #        print(record)
 #        query(sql, record)
-
+if __name__ == '__main__':
+    insert_product_type_data(("test",))
 #if __name__ == "__main__":
 #    product_types = [("Coffee",)]
 #    products = [("Latte", 1.35, 1)]

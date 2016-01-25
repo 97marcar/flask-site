@@ -78,7 +78,11 @@ def customer_order_table():
 #            FOREIGN KEY(ProductID) references Product(ProductID))"""
 #    create_table(db_name, "OrderItem", sql)
 
-
+def create_table_functions():
+    create_product_table()
+    create_product_type_table()
+    create_customer_table()
+    customer_order_table()
 
 if __name__ == "__main__":
     db_name = "database.db"
